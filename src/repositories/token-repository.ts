@@ -23,4 +23,5 @@ export interface ITokenRepository {
   listByUser(userId: string): Promise<PersonalAccessToken[]>;
   revoke(id: string): Promise<void>; // Sets enabled=false
   delete(id: string): Promise<void>; // Hard delete
+  updateSecret(id: string, secretHash: string): Promise<void>; // Replace the hashed secret
 }

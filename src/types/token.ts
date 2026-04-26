@@ -11,10 +11,20 @@ export interface PersonalAccessToken {
   createdAt: Date;
 }
 
-export interface TokenScope {
-  type: 'read' | 'write' | 'admin';
-  resource: 'plans' | 'notes' | 'tokens' | '*';
-}
+export type TokenScope = string;
+
+/** Predefined scope strings for convenience */
+export const Scopes = {
+  READ: 'read',
+  WRITE: 'write',
+  ADMIN: 'admin',
+  READ_PLANS: 'read:plans',
+  WRITE_PLANS: 'write:plans',
+  READ_NOTES: 'read:notes',
+  WRITE_NOTES: 'write:notes',
+  MANAGE_TOKENS: 'manage:tokens',
+  ALL: '*',
+} as const;
 
 export interface TokenCreationResult {
   token: PersonalAccessToken; // The stored record (with hash, no raw secret)

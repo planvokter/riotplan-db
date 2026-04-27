@@ -4,7 +4,7 @@ export interface ITokenRepository {
   get(id: string): Promise<PersonalAccessToken | null>;
   findByHash(secretHash: string): Promise<PersonalAccessToken | null>;
   create(
-    token: Omit<PersonalAccessToken, 'id' | 'createdAt' | 'lastUsedAt'>,
+    token: Omit<PersonalAccessToken, 'createdAt' | 'lastUsedAt'> & { secretHash: string },
   ): Promise<PersonalAccessToken>;
   update(
     id: string,
